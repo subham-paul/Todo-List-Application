@@ -11,7 +11,9 @@ class TodoController extends Controller
     //adding a function which will returns all posts in json format.
     public function index()
     {
-        $todos =  DB::table("todos")->get();
+        $todos =  DB::table("todos")
+        ->orderByDesc('created')
+        ->get();
         // dd($todos);
         http_response_code(200);
         return response()->json($todos);

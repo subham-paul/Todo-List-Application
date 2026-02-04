@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Modernize Post Management</title>
+    <title>To-Do List Application</title>
 
     <!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -131,11 +131,11 @@
                     console.log("StAtUs=> ",status);
                         // Format the created date
                         const formattedDate = formatMySQLDate(data.created);
-                        showAlert("info", `<form onsubmit="handleUpdate(event)"><strong>Post Details</strong><br>
+                        showAlert("info", `<form onsubmit="handleUpdate(event)"><strong>To-Do Details</strong><br>
                             <b>ID:</b> <input type="hidden" id="h_post_id" value="${data.post_id}"/><br>
-                            <b>Title:</b> <input type="text" name="editTitle" id="editTitle" value="${data.title}" class="form-control"/><br>
-                            <b>Description:</b><textarea rows="10" name="editDesc" id="editDesc" cols="30" class="form-control">${data.description}</textarea><br>
-                            <b>Created:</b> ${formattedDate}
+                            <b>Name:</b> <input type="text" name="editTitle" id="editTitle" value="${data.title}" class="form-control"/><br>
+                            <b>Details:</b><textarea rows="10" name="editDesc" id="editDesc" cols="30" class="form-control">${data.description}</textarea><br>
+                            <b>Created At:</b> ${formattedDate}
                                 <button class="btn btn-dark">UPDATE</button> | <button type="button" onclick="handleDelete()" class="btn btn-info">DELETE</button>
                                 </form>
                             `);
@@ -174,16 +174,16 @@
                         if (status == "success") {
                             var strContent = `
                             <div class="card shadow-sm animate__animated animate__fadeIn">
-                                <div class="card-header bg-dark text-white">📋 All Posts</div>
+                                <div class="card-header bg-dark text-white">📋 All To-Do Items</div>
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-bordered mb-0">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>Created</th>
+                                                    <th>Name</th>
+                                                    <th>Details</th>
+                                                    <th>Created At</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -228,14 +228,14 @@
 
 <body class="bg-light">
     <div class="container py-4">
-        <h1 class="text-center mb-4">📢 Modernize Post Management</h1>
+        <h1 class="text-center mb-4">📢 Modernize To-Do List Application</h1>
 
         <!-- Alert Box -->
         <div id="alertBox"></div>
 
         <div class="text-center mb-4">
-            <button id="btnLoad" class="btn btn-primary btn-lg shadow-sm mr-2">Show All Posts</button>
-            <button id="btnAddPost" class="btn btn-success btn-lg shadow-sm">➕ Add Post</button>
+            <button id="btnLoad" class="btn btn-primary btn-lg shadow-sm mr-2">Show All To-Do Items</button>
+            <button id="btnAddPost" class="btn btn-success btn-lg shadow-sm">➕ Add To-Do Item</button>
         </div>
 
         <div class="row">
@@ -247,19 +247,20 @@
             <!-- Add Post Form (Hidden by default) -->
             <div class="col-lg-6">
                 <div id="addPostForm" class="card shadow-sm d-none">
-                    <div class="card-header bg-success text-white">➕ Add New Post</div>
+                    <div class="card-header bg-success text-white">➕ Add New To-Do</div>
                     <div class="card-body">
                         <form onsubmit="handleSubmit(event)">
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title" class="font-weight-bold">Name:</label>
                                 <input type="text" name="title" id="title" required class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="desc">Description</label>
+                                <label for="desc" class="font-weight-bold">Details:</label>
                                 <textarea name="desc" id="desc" required class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group text-right">
-                                <button class="btn btn-success shadow-sm">Submit</button>
+                                <button class="btn btn-success shadow-sm">Add Now</button>
+                                <button type="reset" class="btn btn-danger shadow-sm">Clear Form</button>
                             </div>
                         </form>
                     </div>

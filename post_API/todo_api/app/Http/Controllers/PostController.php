@@ -10,7 +10,9 @@ class PostController extends Controller
     //adding a function which will returns all posts in json format.
     public function index()
     {
-        $posts =  DB::table("posts")->get();
+        $posts =  DB::table("posts")
+        ->orderByDesc('created')
+        ->get();
         // dd($posts);
         http_response_code(200);
         return response()->json($posts);
