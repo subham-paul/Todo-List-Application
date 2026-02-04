@@ -30,7 +30,7 @@ This **To-Do List Application** is a robust and modern task management tool deve
 
 ---
 
-## 📸 Preview 
+## Preview 📸
 
 https://github.com/user-attachments/assets/5da3f60f-03fc-4b65-9059-caf1302c5cb1
 
